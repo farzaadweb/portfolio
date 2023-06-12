@@ -18,3 +18,17 @@
     },
   ];
 </script>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+  {#each media as m}
+    <div
+      class="bg-zinc-200 rounded-3xl py-3 shadow-inner border border-xinc-300 text-center group"
+    >
+      <a
+        href={m.src}
+        class="text-2xl font-semibold group-hover:tracking-[5px] transition-all duration-200"
+        >{m.title}</a
+      >
+    </div>
+  {/each}
+</div>

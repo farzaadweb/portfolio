@@ -1,13 +1,7 @@
 <script setup lang="ts">
   export let align: "left" | "center" | "right" = "center";
-  export let theme: "dark" | "light";
 
-  const currentFontColor = {
-    light: "rgb(39, 39, 42)",
-    dark: "rgb(226, 232, 240)",
-  }[theme];
-
-  const styleConfigs = `--font-color: ${currentFontColor}; --align-position: ${align}`;
+  const styleConfigs = `--align-position: ${align}`;
 </script>
 
 <div class="segment-header w-full relative" style={styleConfigs}>
@@ -23,7 +17,7 @@
 
 <style scoped>
   .segment-header {
-    color: var(--font-color);
+    color: rgb(51, 65, 85);
     text-align: var(--align-position);
   }
 

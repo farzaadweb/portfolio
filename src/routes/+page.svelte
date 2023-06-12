@@ -1,11 +1,11 @@
 <script setup lang="ts">
   import { Segment, SegmentHeader, HyperButton } from "$elements";
-  import { Technology, Articles, SocialMedia } from "$segments";
+  import { Technology, Articles, SocialMedia, Contact } from "$segments";
 </script>
 
-<Segment height="fit">
+<!-- <Segment height="fit" backgroundColor="primary">
   <div class="h-full flex flex-col items-center justify-center text-center">
-    <div class="relative z-40 introducer">
+    <div class="relative z-40">
       <h1 class="text-xl md:text-5xl lg:text-6xl font-bold text-blue-500">
         Hello, EveryOne
       </h1>
@@ -16,7 +16,7 @@
         A Front End Developer :)
       </h1>
       <p
-        class="max-w-2xl text-sm lg:text-lg mt-2 lg:mt-4 text-zinc-600 inline-block"
+        class="max-w-2xl text-xs md:text-sm lg:text-lg mt-1 lg:mt-4 text-zinc-600 inline-block"
       >
         Passionate Frontend Developer | Creating Engaging User Experiences with
         HTML, CSS, and JavaScript | Transforming Designs into High-Performance
@@ -26,60 +26,31 @@
   </div>
 </Segment>
 
-<Segment height="fit" backgroundColor="secondary" padding="py-6 lg:py-8">
+<Segment height="fit" backgroundColor="secondary" padding="pb-6 lg:pb-10">
   <Technology />
 </Segment>
 
 <Segment height="fit" backgroundColor="primary">
-  <SegmentHeader theme="light">Work Samples</SegmentHeader>
-</Segment>
+  <SegmentHeader>Work Samples</SegmentHeader>
+  <div class="mt-12 lg:mt-14 text-center">
+    <span class="text-slate-400">In Progress ...</span>
+  </div>
+</Segment> -->
 
-<Segment height="fit" backgroundColor="secondary">
-  <SegmentHeader theme="dark">Articles</SegmentHeader>
+<!-- <Segment height="fit" backgroundColor="secondary">
+  <SegmentHeader>Articles</SegmentHeader>
   <div class="mt-12 lg:mt-14">
     <Articles />
   </div>
+</Segment> -->
+
+<!-- 
+
+<Segment height="fit" backgroundColor="primary" padding="py-10">
+  <SocialMedia />
 </Segment>
 
-<Segment height="fit" backgroundColor="primary">
-  <SegmentHeader theme="light">Social Media</SegmentHeader>
-  <div class="mt-12 lg:mt-14"><SocialMedia /></div>
-</Segment>
-
-<style scoped>
-  .introducer::before {
-    content: "";
-    width: 300px;
-    height: 300px;
-    border-radius: 999px;
-    background-color: #ef4444;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    filter: blur(100px);
-  }
-  .introducer::after {
-    content: "";
-    width: 300px;
-    height: 300px;
-    border-radius: 999px;
-    background-color: #3b82f6;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    filter: blur(100px);
-  }
-
-  @media only screen and (max-width: 640px) {
-    .introducer::before {
-      width: 200px;
-      height: 200px;
-    }
-    .introducer::after {
-      width: 200px;
-      height: 200px;
-    }
-  }
-</style>
+<Segment height="fit" backgroundColor="secondary">
+  <SegmentHeader theme="dark">Contact Me</SegmentHeader>
+  <div class="mt-12 lg:mt-14"><Contact /></div>
+</Segment> -->

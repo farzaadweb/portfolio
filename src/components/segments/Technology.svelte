@@ -33,8 +33,8 @@
   {#each technologys as tech}
     <SwiperSlide>
       <div
-        class="w-full h-full bg-zinc-700 rounded-xl py-1 px-2 border border-zinc-600
-         shadow-inner shadow-zinc-800 relative z-40 tech-box overflow-hidden"
+        class="w-full h-full bg-slate-200 rounded-xl py-1 px-2 border border-slate-300
+         shadow-inner shadow-slate-300 relative z-40 tech-box overflow-hidden"
       >
         <a href={tech.techSourceLink} title={tech.techName} target="_blank">
           <img
@@ -50,14 +50,14 @@
 
 <style scoped>
   .tech-box::before {
-    content: "a";
+    content: "";
     position: absolute;
     left: 30px;
     top: 30px;
     width: 50px;
     height: 50px;
     z-index: -1;
-    background-color: #dc2626;
+    background-color: rgb(29, 78, 216);
     filter: blur(30px);
     opacity: 0;
     transition: all 0.2s;
