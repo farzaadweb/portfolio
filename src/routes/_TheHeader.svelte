@@ -1,80 +1,111 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
+  import { HyperButton } from "$elements";
 
   const headerItems = [
     {
-      name: "HOME",
-      to: "/",
+      name: "صفحه اصلی",
+      href: "/",
     },
     {
-      name: "ABOUT US",
-      to: "/about us",
+      name: "نمونه کارها",
+      href: "/work-samples",
     },
     {
-      name: "SERVICES",
-      to: "/services",
+      name: "سرویس‌ها",
+      child: [
+        {
+          name: "خدمات",
+          href: "/services",
+        },
+        {
+          name: "لیست قیمت‌ها",
+          href: "/price-list",
+        },
+        {
+          name: "خدمات افزودنی",
+          href: "/additive-services",
+        },
+        {
+          name: "سایر",
+          href: "/other",
+        },
+      ],
     },
     {
-      name: "PROJECTS",
-      to: "/projects",
+      name: "درباره من",
+      href: "/about-me",
     },
     {
-      name: "CONTACT",
-      to: "/#contact",
+      name: "وبلاگ",
+      href: "/blog",
     },
   ];
 
   let navbarStatus: boolean = false;
 </script>
 
-<div class="h-20 hidden lg:block">
-  <div class="w-full h-full container flex items-center justify-between">
-    <div>
-      <h1 class="font-semibold text-2xl text-zinc-800">Farzad Farzanehnya</h1>
-    </div>
-    <div class="flex items-center">
-      {#each headerItems as link, index}
-        <div class="flex items-center">
-          <a
-            href={link.to}
-            class="hover:text-slate-600 transition-none duration-200"
-            >{link.name}</a
+<!-- Desktop Size -->
+<div class="h-16 hidden lg:flex justify-between items-center container">
+  <div class="flex items-center gap-20">
+    <a href="/"><img src="src/assets/logo.svg" alt="logo" class="w-8" /></a>
+    <div class="flex gap-6">
+      {#each headerItems as item}
+        {#if item.child}
+          <div
+            class="relative z-40 group overflow-hidden hover:overflow-visible"
           >
-          {#if index !== headerItems.length - 1}<div
-              class="h-1 border-2 border-zinc-900 mx-4"
-            />{/if}
-        </div>
+            <span class="flex items-end gap-0.5 nav-item">
+              {item.name}
+              <img
+                src="src/assets/icons/direction-down.svg"
+                alt="direction-down"
+                class="w-5"
+              /></span
+            >
+            <div
+              class="w-max absolute top-4 right-0 pt-4 opacity-0 group-hover:opacity-100 group-hover:top-full transition-all duration-300"
+            >
+              <ul
+                class="list-disc space-y-2 bg-slate-50 shadow-2xl rounded-xl border-t-4 border-blue-600 py-4 px-8"
+              >
+                {#each item.child as child}
+                  <li class="nav-item">
+                    <a href={child.href}>{child.name}</a>
+                  </li>
+                {/each}
+              </ul>
+            </div>
+          </div>
+        {:else}
+          <a href={item.href} class="nav-item">{item.name}</a>
+        {/if}
       {/each}
     </div>
+  </div>
+  <div class="flex items-center gap-4">
+    <HyperButton type="button" style="nobackground" theme="primary" size="fit">
+      <img src="src/assets/icons/search.svg" alt="call_icon" />
+    </HyperButton>
+    <HyperButton type="button" style="solid" theme="primary" size="sm"
+      ><img
+        src="src/assets/icons/call.svg"
+        alt="call_icon"
+        class="w-5 inline ml-1.5"
+      /> تماس‌ با من
+    </HyperButton>
   </div>
 </div>
 
-<!-- For Mobile First -->
-<div class="lg:hidden relative z-40">
-  <div class="h-20 container flex justify-between items-center bg-slate-50">
-    <h1 class="font-semibold text-xl text-zinc-800">Farzad Farzanehnya</h1>
-    <button on:click={() => (navbarStatus = !navbarStatus)}>
-      <img
-        src={navbarStatus
-          ? "src/assets/icons/remove.svg"
-          : "src/assets/icons/menu.svg"}
-        alt=""
-      />
-    </button>
-  </div>
-  {#if navbarStatus}
-    <div
-      in:fly={{ y: -200, duration: 1000, opacity: 0.7 }}
-      out:fly={{ y: -200, duration: 1000, opacity: 0.7 }}
-      class="w-full absolute left-0 top-full -z-10 container bg-slate-100 py-6 grid grid-cols-1 gap-3"
-    >
-      {#each headerItems as link}
-        <a
-          href={link.to}
-          class="hover:text-slate-600 transition-none duration-200 divide-y-2 divide-slate-200"
-          >{link.name}</a
-        >
-      {/each}
-    </div>
-  {/if}
-</div>
+<style scoped>
+  .nav-item {
+    font-weight: 600;
+    color: #525252;
+    transition: all 0.1s;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .nav-item:hover {
+    color: #6b7280;
+  }
+</style>

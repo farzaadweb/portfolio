@@ -30,8 +30,8 @@
     full: "rounded-full",
   }[rounded];
   let currentTheme = {
-    primary: ["30, 41, 59", "51, 65, 85"],
-    secondary: ["59, 130, 246", "96, 165, 250"],
+    primary: ["37, 99, 235", "59, 130, 246"],
+    secondary: ["234, 179, 8", "250, 204, 21"],
     success: ["22, 163, 74", "34, 197, 94"],
     warning: ["202, 138, 4", "234, 179, 8"],
     attention: ["220, 38, 38", "239, 68, 68"],
@@ -50,7 +50,9 @@
 {#if type === "link"}
   <a {href} style={styleConfigs} class={baseClasses} {target}><slot /></a>
 {:else if type === "button"}
-  <button style={styleConfigs} class={baseClasses} {disabled}><slot /></button>
+  <button style={styleConfigs} class={baseClasses} {disabled} on:click
+    ><slot /></button
+  >
 {:else}
   <p>Please Enter Correct Type</p>
 {/if}
@@ -59,7 +61,7 @@
   .solid {
     background-color: rgb(var(--theme));
     outline: 2px solid transparent;
-    outline-offset: 4px;
+    outline-offset: 2px;
   }
   .solid:hover {
     background-color: rgb(var(--theme-onHover));
